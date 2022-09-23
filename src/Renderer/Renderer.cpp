@@ -113,7 +113,7 @@ namespace Renderer
 		glfwPollEvents();
 	}
 
-	void DrawTriangle( const glm::vec2& a, const glm::vec2& b, const glm::vec2& c, glm::vec3 color )
+	void DrawTriangle( const glm::vec2& a, const glm::vec2& b, const glm::vec2& c, const glm::vec3& color )
 	{
 		auto index = unsigned short( verticesCurrPtr - vertices );
 
