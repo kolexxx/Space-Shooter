@@ -2,7 +2,7 @@
 
 #include "GLObject.h"
 
-class IndexBuffer : GLObject
+class IndexBuffer : public GLObject
 {
 public:
 	IndexBuffer( GLsizeiptr size, const void* data, GLenum usage = GL_STATIC_DRAW );

@@ -7,7 +7,7 @@
 #include<string>
 #include<unordered_map>
 
-class Shader : GLObject
+class Shader : public GLObject
 {
 public:
 	Shader( const std::string& vertexShaderPath, const std::string& fragmentShaderPath );

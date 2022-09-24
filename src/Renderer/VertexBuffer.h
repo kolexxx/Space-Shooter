@@ -2,7 +2,7 @@
 
 #include "GLObject.h"
 
-class VertexBuffer : GLObject
+class VertexBuffer : public GLObject
 {
 public:
 	VertexBuffer( GLsizeiptr size, const void* data, GLenum usage = GL_STATIC_DRAW );

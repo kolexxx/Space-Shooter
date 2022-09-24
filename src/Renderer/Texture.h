@@ -7,7 +7,7 @@
 #include <string>
 #include <unordered_map>
 
-class Texture : GLObject
+class Texture : public GLObject
 {
 public:
 	// static std::array<Texture, 32> s_Slots;
