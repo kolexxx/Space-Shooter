@@ -114,7 +114,7 @@ int main( void )
 			frames++;
 			unprocessedTime -= updateCap;
 
-			for ( auto& entity : Entity::All )
+			for ( auto& entity : Entity::All() )
 				entity->Tick();
 		}
 
@@ -123,7 +123,7 @@ int main( void )
 
 		Renderer::BeginBatch();
 
-		for ( auto& entity : Entity::All )
+		for ( auto& entity : Entity::All() )
 			entity->Frame();
 
 		Renderer::EndBatch();

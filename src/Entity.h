@@ -8,18 +8,19 @@
 class Entity
 {
 public:
-	static std::vector<std::shared_ptr<Entity>> All;
+	static const std::vector<std::shared_ptr<Entity>>& All();
 
 	Entity();
 	virtual ~Entity();
 
 	friend int main( void );
 protected:
-	void Tick();
-	void Frame();
+	virtual void Tick() = 0;
+	virtual void Frame() = 0;
+	virtual void Touch( const Entity& other ) = 0;
 
-	void Touch( const Entity& other );
-
-	glm::vec3 m_position;
+	glm::vec2 m_position;
 	glm::vec2 m_bbox;
+private:
+	static std::vector<std::shared_ptr<Entity>> s_all;
 };
