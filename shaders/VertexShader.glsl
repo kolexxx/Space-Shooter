@@ -9,6 +9,7 @@ uniform mat4 u_Projection;
 
 out vec3 color;
 out vec2 UV;
+out float texture;
 
 void main()
 {
@@ -16,4 +17,5 @@ void main()
 
 	color = vertexColor;
 	UV = vertexUV;
+	texture = textureID;
 }

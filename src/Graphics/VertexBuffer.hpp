@@ -1,6 +1,6 @@
 #pragma once
 
-#include "GLObject.h"
+#include "GLObject.hpp"
 
 class VertexBuffer : public GLObject
 {

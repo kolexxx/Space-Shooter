@@ -1,6 +1,6 @@
 #pragma once
 
-#include "GLObject.h"
+#include "GLObject.hpp"
 
 #include <glm/glm.hpp>
 

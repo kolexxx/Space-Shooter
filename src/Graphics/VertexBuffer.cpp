@@ -1,4 +1,4 @@
-#include "VertexBuffer.h"
+#include "VertexBuffer.hpp"
 
 VertexBuffer::VertexBuffer( GLsizeiptr size, const void* data, GLenum usage )
 {

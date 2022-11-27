@@ -1,4 +1,4 @@
-#include "IndexBuffer.h"
+#include "IndexBuffer.hpp"
 
 IndexBuffer::IndexBuffer( GLsizeiptr size, const void* data, GLenum usage )
 {
