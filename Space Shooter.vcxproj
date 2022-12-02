@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Bullet.cpp" />
     <ClCompile Include="src\Entity.cpp" />
     <ClCompile Include="src\Graphics\Camera.cpp" />
     <ClCompile Include="src\Graphics\GLObject.cpp" />
@@ -153,6 +154,7 @@
     <ClCompile Include="src\Graphics\VertexBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Bullet.hpp" />
     <ClInclude Include="src\Entity.hpp" />
     <ClInclude Include="src\Graphics\Camera.hpp" />
     <ClInclude Include="src\Graphics\GLObject.hpp" />

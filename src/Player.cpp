@@ -1,12 +1,14 @@
 #include "Player.hpp"
 
+#include "Bullet.hpp"
 #include "Input.hpp"
 #include "Time.hpp"
 
-Player::Player() : m_Speed(200), m_Texture(Texture::Load("textures/uvtemplate.DDS"))
+Player::Player() :
+	Entity(glm::vec2(0, 0), glm::vec2(50.0f, 50.0f)),
+	m_speed(200),
+	m_texture(Texture::Load("textures/uvtemplate.DDS"))
 {
-	m_Position = { 0, 0 };
-	m_BBox = { 300.0f, 300.0f };
 }
 
 void Player::Tick()
@@ -22,13 +24,14 @@ void Player::Tick()
 	if (Input::Down('D'))
 		wishDir.x += 1;
 
-	if (wishDir.x == 0 && wishDir.y == 0)
-		return;
+	if (wishDir.x != 0 || wishDir.y != 0)
+		m_position += glm::normalize(wishDir) * m_speed * Time::Delta();
 
-	m_Position += glm::normalize(wishDir) * m_Speed * Time::Delta();
+	if (Input::Pressed(' '))
+		new Bullet(m_position + glm::vec2(0, m_BBox.y / 2.0f));
 }
 
 void Player::Frame()
 {
-	Graphics::DrawQuad(m_Position, m_BBox, m_Texture);
+	Graphics::DrawQuad(m_position, m_BBox, glm::vec3(1, 0, 0));
 }

@@ -19,5 +19,4 @@ unsigned int Time::Tick()
 
 float Time::s_delta = 0.0f;
 
-
 unsigned int Time::s_tick = 0;

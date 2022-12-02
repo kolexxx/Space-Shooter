@@ -11,6 +11,6 @@ public:
 	void Tick() override;
 	void Frame() override;
 private:
-	float m_Speed;
-	Texture& m_Texture;
+	float m_speed;
+	Texture& m_texture;
 };

@@ -1,25 +1,50 @@
 #include "Entity.hpp"
 
-const std::vector<std::shared_ptr<Entity>>& Entity::All()
+const std::vector<Entity*>& Entity::All()
 {
-	return s_All;
+	return s_all;
 }
 
-Entity::Entity() : m_Position( glm::vec2( 0 ) ), m_BBox( glm::vec2( 0 ) )
+Entity::Entity() : Entity(glm::vec2(0), glm::vec2(0)) {}
+
+Entity::Entity(glm::vec2 position, glm::vec2 BBox) :
+	m_position(position),
+	m_BBox(BBox)
 {
-	s_All.emplace_back( this );
+	s_newEntites.push_back(this);
 }
 
-Entity::~Entity()
+void Entity::Delete()
 {
-	for ( auto it = s_All.begin(); it != s_All.end(); it++ )
+	s_invalidEntites.push_back(this);
+}
+
+void Entity::UpdateList()
+{
+	auto invalidEntity = s_invalidEntites.begin();
+	auto it = s_all.begin();
+	while (it != s_all.end())
 	{
-		if ( it->get() != this )
-			continue;
+		if (invalidEntity == s_invalidEntites.end())
+			break;
 
-		s_All.erase( it );
-		break;
+		if (*it != *invalidEntity)
+		{
+			it++;
+			continue;
+		}
+
+		delete* it;
+		it = s_all.erase(it);
+		invalidEntity++;
 	}
+
+	s_all.insert(s_all.end(), s_newEntites.begin(), s_newEntites.end());
+
+	s_invalidEntites.clear();
+	s_newEntites.clear();
 }
 
-std::vector<std::shared_ptr<Entity>> Entity::s_All{};
+std::vector<Entity*> Entity::s_all{};
+std::vector<Entity*> Entity::s_invalidEntites{};
+std::vector<Entity*> Entity::s_newEntites{};
