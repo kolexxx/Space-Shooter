@@ -6,7 +6,6 @@
 
 #include "Graphics/Graphics.hpp"
 #include "SpaceShooter.hpp"
-#include "Player.hpp"
 
 void APIENTRY DebugOutputCallback(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar* message, const void* userParam)
 {
@@ -94,7 +93,7 @@ int main(void)
 	{
 		if (second >= 1.0f)
 		{
-			printf("TPS: %d\n", frames);
+			printf("%d\n", Entity::All().size());
 			second = 0;
 			frames = 0;
 		}
@@ -105,8 +104,6 @@ int main(void)
 		unprocessedTime += elapsedTime;
 		lastTime = currTime;
 
-		Input::Build();
-
 		while (unprocessedTime >= updateCap)
 		{
 			Time::s_delta = Time::Now() - lastTick;
@@ -116,7 +113,10 @@ int main(void)
 			frames++;
 			unprocessedTime -= updateCap;
 
-			for (auto& entity : Entity::All())
+			Input::Build();
+			Entity::UpdateList();
+
+			for (auto* entity : Entity::All())
 				entity->Tick();
 		}
 
@@ -127,7 +127,7 @@ int main(void)
 
 		Graphics::BeginBatch();
 
-		for (auto& entity : Entity::All())
+		for (auto* entity : Entity::All())
 			entity->Frame();
 
 		Graphics::EndBatch();

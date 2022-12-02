@@ -13,7 +13,7 @@ public:
 private:
 	static void Build();
 
-	static std::array<bool, 91> s_Pressed;
-	static std::array<bool, 91> s_Down;
-	static std::array<bool, 91> s_Released;
+	static std::array<bool, 91> s_pressed;
+	static std::array<bool, 91> s_down;
+	static std::array<bool, 91> s_released;
 };
